@@ -1,1 +1,116 @@
+class Pokemon:
+    def __init__(self, nome, vida, ataque, defesa, tipo, cor, nivel=10):
+        self.nome = nome
+        self.vida = vida
+        self.ataque = ataque
+        self.defesa = defesa
+        self.tipo = tipo
+        self.cor = cor
+        self.nivel = nivel
+        self.golpes = []
 
+    def aprender_golpe(self, nome, poder, tipo, chance_status=0.0, status=None):
+        """
+        chance_status: de 0.0 a 1.0  (ex: 0.25 = 25%)
+        status: "Queimadura", "Paralisia", "Veneno", "Sono", "Confusão"
+                ou None se o golpe não aplica status
+        """
+        self.golpes.append({class Pokemon:
+    def __init__(self, nome, vida, ataque, defesa, tipo, cor, nivel=10):
+        self.nome = nome
+        self.vida = vida
+        self.ataque = ataque
+        self.defesa = defesa
+        self.tipo = tipo
+        self.cor = cor
+        self.nivel = nivel
+        self.golpes = []
+
+    def aprender_golpe(self, nome, poder, tipo, chance_status=0.0, status=None):
+        """
+        chance_status: de 0.0 a 1.0  (ex: 0.25 = 25%)
+        status: "Queimadura", "Paralisia", "Veneno", "Sono", "Confusão"
+                ou None se o golpe não aplica status
+        """
+        self.golpes.append({
+            "nome": nome,
+            "poder": poder,
+            "tipo": tipo,
+            "status_chance": chance_status,
+            "status_nome": status,
+        })
+
+
+def criar_meu_pokemon(dono="Aluno"):
+    p = Pokemon(
+        nome="",
+        vida=0,
+        ataque=0,
+        defesa=0,
+        tipo="",
+        cor="#fdd835",
+        nivel=0,
+    )
+
+    # Golpe COM status (25% de paralisar)
+    p.aprender_golpe("Choque", 12, "Elétrico", 0.25, "Paralisia")
+
+    # Golpe SEM status
+    p.aprender_golpe("Investida", 8, "Normal")
+
+    # Outro com status (15% de paralisar)
+    p.aprender_golpe("Trovão", 15, "Elétrico", 0.15, "Paralisia")
+
+    return p
+   
+
+
+# Teste rápido (opcional):
+#   python alunos/meu_pokemon.py
+if __name__ == "__main__":
+    p = criar_meu_pokemon()
+    print("Nome:", p.nome)
+    print("Vida:", p.vida, "ATK:", p.ataque, "DEF:", p.defesa)
+    print("Tipo:", p.tipo, "Nível:", p.nivel)
+    print("Golpes:", p.golpes)
+
+            "nome": nome,
+            "poder": poder,
+            "tipo": tipo,
+            "status_chance": chance_status,
+            "status_nome": status,
+        })
+
+
+def criar_meu_pokemon(dono="Aluno"):
+    p = Pokemon(
+        nome="",
+        vida=0,
+        ataque=0,
+        defesa=0,
+        tipo="",
+        cor="#fdd835",
+        nivel=0,
+    )
+
+    # Golpe COM status (25% de paralisar)
+    p.aprender_golpe("Choque", 12, "Elétrico", 0.25, "Paralisia")
+
+    # Golpe SEM status
+    p.aprender_golpe("Investida", 8, "Normal")
+
+    # Outro com status (15% de paralisar)
+    p.aprender_golpe("Trovão", 15, "Elétrico", 0.15, "Paralisia")
+
+    return p
+   
+
+
+# Teste rápido (opcional):
+#   python alunos/meu_pokemon.py
+if __name__ == "__main__":
+    p = criar_meu_pokemon()
+    print("Nome:", p.nome)
+    print("Vida:", p.vida, "ATK:", p.ataque, "DEF:", p.defesa)
+    print("Tipo:", p.tipo, "Nível:", p.nivel)
+    print("Golpes:", p.golpes)
