@@ -1,1 +1,59 @@
+class Pokemon:
+    def __init__(self, nome, vida, ataque, defesa, tipo, cor, nivel=10):
+        self.nome = nome
+        self.vida = vida
+        self.ataque = ataque
+        self.defesa = defesa
+        self.tipo = tipo
+        self.cor = cor
+        self.nivel = nivel
+        self.golpes = []
+
+    def aprender_golpe(self, nome, poder, tipo, chance_status=0.0, status=None):
+        """
+        chance_status: de 0.0 a 1.0  (ex: 0.25 = 25%)
+        status: "Queimadura", "Paralisia", "Veneno", "Sono", "Confusão"
+                ou None se o golpe não aplica status
+        """
+        self.golpes.append({
+            "nome": nome,
+            "poder": poder,
+            "tipo": tipo,
+            "status_chance": chance_status,
+            "status_nome": status,
+        })
+
+
+def criar_meu_pokemon(dono="Aluno"):
+    p = Pokemon(
+        nome="Sakura",
+        vida=100,
+        ataque=65,
+        defesa=95,
+        tipo="Psiquico",
+        cor="#E0AFEA",
+        nivel=38,
+    )
+
+    # Golpe COM status (25% de chance de Confusão no Raio Psíquico)
+    p.aprender_golpe("Raio Psíquico", 12, "Psíquico", 0.25, "Confusão")
+
+    # Golpe SEM status (Investida)
+    p.aprender_golpe("Investida", 8, "Normal")
+
+    # Outro com status (15% de chance de efeito adaptado para o Estrela)
+    p.aprender_golpe("Estrela", 15, "Normal", 0.15, "Redução de Esquiva")
+
+    return p
+   
+
+
+# Teste rápido (opcional):
+#   python alunos/meu_pokemon.py
+if __name__ == "__main__":
+    p = criar_meu_pokemon()
+    print("Nome:", p.nome)
+    print("Vida:", p.vida, "ATK:", p.ataque, "DEF:", p.defesa)
+    print("Tipo:", p.tipo, "Nível:", p.nivel)
+    print("Golpes:", p.golpes)
 
